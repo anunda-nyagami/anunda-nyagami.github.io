@@ -1,32 +1,37 @@
-Initio - Free, multipurpose html5 template
-=============
+## Welcome to GitHub Pages
 
-Initio is a fully featured html5 theme which will help you create a stylish personal or company site. 
-6 page layout templates should cover all your development needs. 
-Font Awesome 4, parallax effects and more are included (but can be turned off of course)
+You can use the [editor on GitHub](https://github.com/anunda-nyagami/anunda-nyagami.github.io/edit/main/index.md) to maintain and preview the content for your website in Markdown files.
 
+Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-License
--------
-**Creative Commons Attribution 3.0** - http://creativecommons.org/licenses/by/3.0/
+### Markdown
 
+Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
-Bug tracker
------------
+```markdown
+Syntax highlighted code block
 
-Found a bug? Please create an issue here on GitHub! 
-https://github.com/pozh/Initio/issues
+# Header 1
+## Header 2
+### Header 3
 
+- Bulleted
+- List
 
+1. Numbered
+2. List
 
-Credits
--------
-* Design and development: **Sergey Pozhilov** - http://pozhilov.com
-* More free templates by Sergey: http://gettemplate.com
+**Bold** and _Italic_ and `Code` text
 
-Photos used in the template
--------
-* http://www.publicdomainpictures.net/view-image.php?image=19999
-* http://www.publicdomainpictures.net/view-image.php?image=6354
-* http://imcreator.com/free/business/macbook-computer
-* http://unsplush.com
+[Link](url) and ![Image](src)
+```
+
+For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
+
+### Jekyll Themes
+
+Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/anunda-nyagami/anunda-nyagami.github.io/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+
+### Support or Contact
+
+Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
