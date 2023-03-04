@@ -73,6 +73,10 @@ input, select, textarea {
 	appearance: none;
 }
 
+.mylist {
+   padding-left: 25px
+}
+
 /* Basic */
 
 	@-ms-viewport {
