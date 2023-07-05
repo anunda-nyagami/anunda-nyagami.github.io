@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>web-scraping-video-game-ratings-on-imdb</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>web-scraping-all-time-action-movies-from-imdb</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -14579,9 +14579,8 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><strong style="font-size:26px">WEB SCRAPING GAME DETAILS FROM IMDB</strong></p>
-<p><hr>
-<a href="https://www.kaggle.com/code/nyagami/web-scraping-video-game-ratings-on-imdb?scriptVersionId=106439612" target="_blank"><img alt="Kaggle" title="Open in Kaggle" src="https://kaggle.com/static/images/open-in-kaggle.svg"></a></p>
+<h1 id="WEB-SCRAPING-ACTION-MOVIES">WEB SCRAPING ACTION MOVIES<a class="anchor-link" href="#WEB-SCRAPING-ACTION-MOVIES">&#182;</a></h1><p><hr>
+<a href="https://www.kaggle.com/code/nyagami/web-scraping-all-time-action-movies-from-imdb" target="_blank"><img alt="Kaggle" title="Open in Kaggle" src="https://kaggle.com/static/images/open-in-kaggle.svg"></a></p>
 
 </div>
 </div>
@@ -14593,16 +14592,16 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Install-and-import-required-packages">Install and import required packages<a class="anchor-link" href="#Install-and-import-required-packages">&#182;</a></h3>
+<h1 id="Install-and-import-libraries">Install and import libraries<a class="anchor-link" href="#Install-and-import-libraries">&#182;</a></h1>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[48]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>pip install beautifulsoup4 # Installing the beautiful soup package
@@ -14612,6 +14611,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> <span class="c1"># data processing, CSV file I/O (e.g. pd.read_csv)</span>
 <span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span> <span class="k">as</span> <span class="n">bs</span>
+<span class="kn">import</span> <span class="nn">re</span>
 
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="k">for</span> <span class="n">dirname</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">filenames</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="s1">&#39;/kaggle/input&#39;</span><span class="p">):</span>
@@ -14624,6 +14624,34 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 </div>
 
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Requirement already satisfied: beautifulsoup4 in /opt/conda/lib/python3.10/site-packages (4.12.2)
+Requirement already satisfied: soupsieve&gt;1.2 in /opt/conda/lib/python3.10/site-packages (from beautifulsoup4) (2.3.2.post1)
+<span class="ansi-yellow-fg">WARNING: Running pip as the &#39;root&#39; user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv</span><span class="ansi-yellow-fg">
+</span>Requirement already satisfied: html_parser in /opt/conda/lib/python3.10/site-packages (0.2)
+Requirement already satisfied: ply in /opt/conda/lib/python3.10/site-packages (from html_parser) (3.11)
+<span class="ansi-yellow-fg">WARNING: Running pip as the &#39;root&#39; user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv</span><span class="ansi-yellow-fg">
+</span></pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
@@ -14631,7 +14659,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Scraping">Scraping<a class="anchor-link" href="#Scraping">&#182;</a></h3>
+<h1 id="Web-scraping">Web scraping<a class="anchor-link" href="#Web-scraping">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -14640,90 +14668,115 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[49]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">imdb_video_games_dict</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="n">imdb_video_games_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">,</span><span class="s1">&#39;year&#39;</span><span class="p">,</span><span class="s1">&#39;genre&#39;</span><span class="p">,</span><span class="s1">&#39;rating&#39;</span><span class="p">,</span><span class="s1">&#39;votes&#39;</span><span class="p">,</span><span class="s1">&#39;directors&#39;</span><span class="p">,</span><span class="s1">&#39;plot&#39;</span><span class="p">])</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Initialize an empty list to store IMDb movie information</span>
+<span class="n">imdb_movies_list</span> <span class="o">=</span> <span class="p">[]</span>
 
+<span class="c1"># Base URL for IMDb website</span>
+<span class="n">base_url</span> <span class="o">=</span> <span class="s1">&#39;https://imdb.com&#39;</span>
 
+<span class="c1"># Loop through a range of values for &#39;start&#39; parameter in the URL</span>
+<span class="k">for</span> <span class="n">page</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">40000</span><span class="p">,</span> <span class="mi">250</span><span class="p">):</span>
 
-<span class="c1"># Get total entries in the database</span>
-<span class="n">page_url</span> <span class="o">=</span> <span class="s1">&#39;https://www.imdb.com/search/title/?title_type=video_game&amp;sort=user_rating,desc&#39;</span>
-<span class="n">pages_html</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">page_url</span><span class="p">)</span>
-<span class="n">pages_html</span> <span class="o">=</span> <span class="n">bs</span><span class="p">(</span><span class="n">pages_html</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
-<span class="n">current_entry</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">pages_html</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">class_</span><span class="o">=</span><span class="s1">&#39;desc&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">span</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span>
-<span class="n">total_entries</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">pages_html</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">class_</span><span class="o">=</span><span class="s1">&#39;desc&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">span</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">))</span>
-<span class="n">current_entry</span>
-
-<span class="k">while</span> <span class="n">current_entry</span> <span class="o">&lt;</span> <span class="n">total_entries</span><span class="p">:</span>
-    <span class="n">imdb_html</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">page_url</span><span class="p">)</span>
-    <span class="n">imdb</span> <span class="o">=</span> <span class="n">bs</span><span class="p">(</span><span class="n">imdb_html</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
-
-    <span class="c1"># Skip pages not read successfully</span>
-    <span class="k">if</span> <span class="n">imdb_html</span><span class="o">.</span><span class="n">status_code</span><span class="o">!=</span><span class="mi">200</span><span class="p">:</span>
+    <span class="c1"># Construct the URL for each page</span>
+    <span class="n">page_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;https://www.imdb.com/search/title/?title_type=feature&amp;user_rating=1.0,10.0&amp;genres=action&amp;count=250&amp;start=</span><span class="si">{</span><span class="n">page</span><span class="si">}</span><span class="s1">&amp;ref_=adv_nxt&#39;</span>
+    
+    <span class="c1"># Send a GET request to the page URL and retrieve the HTML content</span>
+    <span class="n">pages_html</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">page_url</span><span class="p">)</span>
+    
+    <span class="c1"># Create a BeautifulSoup object to parse the HTML content</span>
+    <span class="n">pages</span> <span class="o">=</span> <span class="n">bs</span><span class="p">(</span><span class="n">pages_html</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Check if the status code of the request is 200 (success)</span>
+    <span class="k">if</span> <span class="n">pages_html</span><span class="o">.</span><span class="n">status_code</span> <span class="o">!=</span> <span class="mi">200</span><span class="p">:</span>
         <span class="k">continue</span>
         
-    <span class="k">for</span> <span class="n">game_row</span> <span class="ow">in</span> <span class="n">imdb</span><span class="o">.</span><span class="n">findAll</span><span class="p">(</span><span class="n">class_</span> <span class="o">=</span> <span class="s1">&#39;lister-item-content&#39;</span><span class="p">):</span>
-       
-        <span class="c1"># Retrieve the title of the game</span>
-        <span class="n">title</span> <span class="o">=</span> <span class="n">game_row</span><span class="o">.</span><span class="n">h3</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">text</span>
-        
-        <span class="c1"># Retrive launching year</span>
-        <span class="n">year</span> <span class="o">=</span> <span class="n">game_row</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">class_</span> <span class="o">=</span> <span class="s1">&#39;lister-item-year text-muted unbold&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
-        <span class="n">year</span> <span class="o">=</span> <span class="n">year</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;(&#39;</span><span class="p">)</span> <span class="c1"># The year is a string. Separate it using an opening parenthesis</span>
-        <span class="n">year</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">year</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;&#39;&quot;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="c1"># Split the string to retrieve the year</span>
-        
-        <span class="c1"># Obtain the genre</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">genre</span> <span class="o">=</span> <span class="n">game_row</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">,</span> <span class="n">class_</span> <span class="o">=</span> <span class="s1">&#39;genre&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-        <span class="k">except</span><span class="p">:</span>
-            <span class="n">genre</span> <span class="o">=</span> <span class="s1">&#39;missing&#39;</span>
-                    
-        <span class="c1"># Retrieve the rating</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">rating</span> <span class="o">=</span> <span class="n">game_row</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">class_</span><span class="o">=</span><span class="s1">&#39;inline-block ratings-imdb-rating&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strong</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span>
-        <span class="k">except</span><span class="p">:</span>
-            <span class="n">rating</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
-        
-        <span class="c1"># Retrieve the plot</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">plot</span> <span class="o">=</span> <span class="n">game_row</span><span class="o">.</span><span class="n">findAll</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-            <span class="n">plot</span> <span class="o">=</span> <span class="n">plot</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;Add a Plot&#39;</span><span class="p">,</span><span class="s1">&#39;Missing&#39;</span><span class="p">)</span> <span class="c1"># Insert missing for blank plots</span>
-        <span class="k">except</span><span class="p">:</span>
-            <span class="n">plot</span> <span class="o">=</span> <span class="s1">&#39;Missing&#39;</span>
-        <span class="c1"># Retrieve the number of voters</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">votes</span> <span class="o">=</span> <span class="n">game_row</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;sort-num_votes-visible&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">,</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="s1">&#39;nv&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span>
-        <span class="k">except</span><span class="p">:</span>
-            <span class="n">votes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
-        
-        <span class="c1"># Directors</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">director</span> <span class="o">=</span> <span class="n">game_row</span><span class="o">.</span><span class="n">findAll</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span>
-            <span class="c1">#print(director)</span>
-            <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">director</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;|&#39;</span><span class="p">):</span> <span class="c1"># Split directors and stars using |</span>
-                <span class="n">word</span> <span class="o">=</span> <span class="n">word</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> 
-                <span class="k">if</span> <span class="n">word</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;Dire&#39;</span><span class="p">):</span> 
-                    <span class="n">ind</span> <span class="o">=</span> <span class="n">word</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span> 
-                    <span class="n">directors</span> <span class="o">=</span><span class="p">(</span><span class="n">word</span><span class="p">[</span><span class="n">ind</span><span class="p">:])</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="c1"># Remove empty lines</span>
-        <span class="k">except</span><span class="p">:</span>
-             <span class="n">directors</span> <span class="o">=</span> <span class="s1">&#39;Missing&#39;</span> <span class="c1"># Set the default value for entries without director details</span>
-        
-        <span class="c1"># Create a dictionary of all attributes of the game</span>
-        <span class="n">imdb_video_games_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">([(</span><span class="s1">&#39;title&#39;</span><span class="p">,</span><span class="n">title</span><span class="p">),(</span><span class="s1">&#39;year&#39;</span><span class="p">,</span><span class="n">year</span><span class="p">),(</span><span class="s1">&#39;genre&#39;</span><span class="p">,</span><span class="n">genre</span><span class="p">),(</span><span class="s1">&#39;rating&#39;</span><span class="p">,</span><span class="n">rating</span><span class="p">),(</span><span class="s1">&#39;votes&#39;</span><span class="p">,</span><span class="n">votes</span><span class="p">),(</span><span class="s1">&#39;directors&#39;</span><span class="p">,</span><span class="n">directors</span><span class="p">),(</span><span class="s1">&#39;plot&#39;</span><span class="p">,</span><span class="n">plot</span><span class="p">)])</span>
-        
-        <span class="c1"># Create a dataframe to store the game details</span>
-        <span class="n">game_row_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">imdb_video_games_dict</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span><span class="n">index</span><span class="o">=</span><span class="n">imdb_video_games_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="o">.</span><span class="n">T</span>
-        
-        <span class="c1"># Append the game details to the current dataframe</span>
-        <span class="n">imdb_video_games_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">imdb_video_games_df</span><span class="p">,</span><span class="n">game_row_df</span><span class="p">,</span><span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">,</span><span class="s1">&#39;year&#39;</span><span class="p">,</span><span class="s1">&#39;genre&#39;</span><span class="p">,</span><span class="s1">&#39;rating&#39;</span><span class="p">,</span><span class="s1">&#39;votes&#39;</span><span class="p">,</span><span class="s1">&#39;directors&#39;</span><span class="p">,</span><span class="s1">&#39;plot&#39;</span><span class="p">],</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">)</span>
+    <span class="c1"># Extract movie information from each &#39;lister-item&#39; div on the page</span>
+    <span class="k">for</span> <span class="n">items</span> <span class="ow">in</span> <span class="n">pages</span><span class="o">.</span><span class="n">findAll</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;lister-item mode-advanced&#39;</span><span class="p">):</span>
+        <span class="n">imdb_movies_dict</span> <span class="o">=</span> <span class="p">{}</span>
 
-    <span class="c1"># Obtain the url for the next page</span>
-    <span class="n">next_page_url_rel</span> <span class="o">=</span> <span class="n">imdb</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">class_</span><span class="o">=</span><span class="s1">&#39;lister-page-next next-page&#39;</span><span class="p">)[</span><span class="s1">&#39;href&#39;</span><span class="p">]</span>
-    <span class="n">next_page_url_abs</span> <span class="o">=</span> <span class="s1">&#39;https://www.imdb.com&#39;</span>
-    <span class="n">page_url</span> <span class="o">=</span> <span class="n">next_page_url_abs</span> <span class="o">+</span> <span class="n">next_page_url_rel</span> <span class="o">+</span> <span class="s1">&#39;&amp;ref_=adv_nxt&#39;</span>
-    <span class="n">current_entry</span> <span class="o">+=</span> <span class="mi">50</span>
+        <span class="c1"># Identify all TV shows and skip to select only movies</span>
+        <span class="k">for</span> <span class="n">cert</span> <span class="ow">in</span> <span class="n">items</span><span class="o">.</span><span class="n">findAll</span><span class="p">(</span><span class="n">class_</span><span class="o">=</span><span class="s1">&#39;certificate&#39;</span><span class="p">):</span>
+            <span class="n">certificate</span> <span class="o">=</span> <span class="n">cert</span><span class="o">.</span><span class="n">text</span>
+            <span class="k">if</span> <span class="n">certificate</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;TV&#39;</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># Extract PG rating</span>
+                <span class="n">pg_rating</span> <span class="o">=</span> <span class="n">certificate</span>
+
+            <span class="n">rel_url</span> <span class="o">=</span> <span class="n">items</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)[</span><span class="s1">&#39;href&#39;</span><span class="p">]</span>
+
+
+            <span class="c1"># Extract movie URL</span>
+            <span class="n">abs_url</span> <span class="o">=</span> <span class="n">base_url</span> <span class="o">+</span> <span class="n">rel_url</span>
+
+            <span class="k">for</span> <span class="n">heading</span> <span class="ow">in</span> <span class="n">items</span><span class="o">.</span><span class="n">findAll</span><span class="p">(</span><span class="s1">&#39;h3&#39;</span><span class="p">):</span>
+                <span class="c1"># Extract movie title</span>
+                <span class="n">title</span> <span class="o">=</span> <span class="n">heading</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+
+                <span class="k">for</span> <span class="n">years</span> <span class="ow">in</span> <span class="n">heading</span><span class="o">.</span><span class="n">findAll</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;lister-item-year text-muted unbold&#39;</span><span class="p">):</span>
+                    <span class="n">year_val</span> <span class="o">=</span> <span class="n">years</span><span class="o">.</span><span class="n">text</span>
+                    <span class="c1"># Extract year </span>
+                    <span class="n">year</span> <span class="o">=</span> <span class="n">year_val</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">year_val</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">6</span><span class="p">:</span>
+                        <span class="c1"># Update title with additional year information</span>
+                        <span class="n">title</span> <span class="o">=</span> <span class="n">title</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">year_val</span><span class="p">[</span><span class="n">year_val</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;(&#39;</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span> <span class="n">year_val</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;)&#39;</span><span class="p">)]</span>
+                        
+            <span class="k">for</span> <span class="n">time</span> <span class="ow">in</span> <span class="n">items</span><span class="o">.</span><span class="n">findAll</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;runtime&#39;</span><span class="p">):</span>
+                <span class="c1"># Extract movie duration</span>
+                <span class="n">duration</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d+&#39;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">text</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+            <span class="k">for</span> <span class="n">genres</span> <span class="ow">in</span> <span class="n">items</span><span class="o">.</span><span class="n">findAll</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;genre&#39;</span><span class="p">):</span>
+                <span class="c1"># Extract genre</span>
+                <span class="n">genre</span> <span class="o">=</span> <span class="n">genres</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+            <span class="k">for</span> <span class="n">ratings</span> <span class="ow">in</span> <span class="n">items</span><span class="o">.</span><span class="n">findAll</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;inline-block ratings-imdb-rating&#39;</span><span class="p">):</span>
+                <span class="c1"># Extract rating</span>
+                <span class="n">rating</span> <span class="o">=</span> <span class="n">ratings</span><span class="o">.</span><span class="n">strong</span><span class="o">.</span><span class="n">text</span>
+
+            <span class="k">for</span> <span class="n">paragraphs</span> <span class="ow">in</span> <span class="n">items</span><span class="o">.</span><span class="n">findAll</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;text-muted&#39;</span><span class="p">):</span>
+                <span class="c1"># Extract movie plot</span>
+                <span class="n">plot</span> <span class="o">=</span> <span class="n">paragraphs</span><span class="o">.</span><span class="n">next_element</span>
+                <span class="n">plot</span> <span class="o">=</span> <span class="n">plot</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+            <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">items</span><span class="o">.</span><span class="n">findAll</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;sort-num_votes-visible&#39;</span><span class="p">):</span>
+                <span class="c1"># Extract number of votes</span>
+                <span class="n">votes</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;nv&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">text</span>
+                <span class="n">votes</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">votes</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span>
+
+                <span class="c1"># Extract gross</span>
+                <span class="k">for</span> <span class="n">values</span> <span class="ow">in</span> <span class="n">p</span><span class="o">.</span><span class="n">findAll</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;nv&#39;</span><span class="p">}):</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="s1">&#39;$&#39;</span> <span class="ow">in</span> <span class="n">values</span><span class="o">.</span><span class="n">text</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="s1">&#39;M&#39;</span> <span class="ow">in</span> <span class="n">values</span><span class="o">.</span><span class="n">text</span><span class="p">):</span>
+                        <span class="n">gross</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">text</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">gross</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+
+            <span class="c1"># Update the dictionary with the extracted movie information</span>
+            <span class="n">imdb_movies_dict</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="n">title</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="n">year</span><span class="p">,</span> <span class="s1">&#39;movie_rating&#39;</span><span class="p">:</span> <span class="n">rating</span><span class="p">,</span> <span class="s1">&#39;total_votes&#39;</span><span class="p">:</span> <span class="n">votes</span><span class="p">,</span>
+                                     <span class="s1">&#39;pg_rating&#39;</span><span class="p">:</span> <span class="n">pg_rating</span><span class="p">,</span> <span class="s1">&#39;duration_mins&#39;</span><span class="p">:</span> <span class="n">duration</span><span class="p">,</span> <span class="s1">&#39;gross&#39;</span><span class="p">:</span> <span class="n">gross</span><span class="p">,</span>
+                                     <span class="s1">&#39;genre&#39;</span><span class="p">:</span> <span class="n">genre</span><span class="p">,</span> <span class="s1">&#39;plot&#39;</span><span class="p">:</span> <span class="n">plot</span><span class="p">,</span> <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="n">abs_url</span><span class="p">})</span>
+            
+            <span class="c1"># Append the dictionary to the list</span>
+            <span class="n">imdb_movies_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">imdb_movies_dict</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[50]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">all_action_movies</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">,</span><span class="s1">&#39;year&#39;</span><span class="p">],</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -14738,7 +14791,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Cleaning-the-data">Cleaning the data<a class="anchor-link" href="#Cleaning-the-data">&#182;</a></h3>
+<h1 id="Save-to-file">Save to file<a class="anchor-link" href="#Save-to-file">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -14747,14 +14800,10 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[51]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Let&#39;s check for duplicates</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">imdb_video_games_df</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">,</span><span class="s1">&#39;year&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
-
-<span class="c1"># Drop duplictes</span>
-<span class="n">imdb_video_games_df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">keep</span><span class="o">=</span><span class="s1">&#39;first&#39;</span><span class="p">,</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">,</span><span class="s1">&#39;year&#39;</span><span class="p">],</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">all_action_movies</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;/kaggle/working/action_movies.csv&#39;</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -14762,26 +14811,15 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 </div>
 
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Saving-output">Saving output<a class="anchor-link" href="#Saving-output">&#182;</a></h3>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[52]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">imdb_video_games_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;imdb_video_game_rating.csv&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">all_action_movies</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 
      </div>
@@ -14789,31 +14827,246 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 </div>
 
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[52]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>(3617, 10)</pre>
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Preview-the-dataframe">Preview the dataframe<a class="anchor-link" href="#Preview-the-dataframe">&#182;</a></h3>
+
 </div>
+
 </div>
+
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[53]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">imdb_video_games_df</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">all_action_movies</span>
 </pre></div>
 
      </div>
 </div>
 </div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[53]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>title</th>
+      <th>year</th>
+      <th>movie_rating</th>
+      <th>total_votes</th>
+      <th>pg_rating</th>
+      <th>duration_mins</th>
+      <th>gross</th>
+      <th>genre</th>
+      <th>plot</th>
+      <th>url</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1505</th>
+      <td>Foodfight!</td>
+      <td>2012</td>
+      <td>1.3</td>
+      <td>11518</td>
+      <td>PG</td>
+      <td>91</td>
+      <td></td>
+      <td>Animation, Action, Adventure</td>
+      <td>The evil Brand X joins a supermarket that beco...</td>
+      <td>https://imdb.com/title/tt0249516/</td>
+    </tr>
+    <tr>
+      <th>3339</th>
+      <td>Da Hip Hop Witch</td>
+      <td>2000</td>
+      <td>1.4</td>
+      <td>1320</td>
+      <td>R</td>
+      <td>90</td>
+      <td></td>
+      <td>Action, Adventure, Comedy</td>
+      <td>5 white kids get lost in the hood looking for ...</td>
+      <td>https://imdb.com/title/tt0245943/</td>
+    </tr>
+    <tr>
+      <th>2902</th>
+      <td>2012: Doomsday</td>
+      <td>2008</td>
+      <td>1.8</td>
+      <td>7517</td>
+      <td>PG-13</td>
+      <td>85</td>
+      <td></td>
+      <td>Action, Adventure, Drama</td>
+      <td>Four strangers on a journey of faith are drawn...</td>
+      <td>https://imdb.com/title/tt1132130/</td>
+    </tr>
+    <tr>
+      <th>2474</th>
+      <td>Atlantic Rim: Resurrection</td>
+      <td>2018</td>
+      <td>1.9</td>
+      <td>917</td>
+      <td>PG-12</td>
+      <td>86</td>
+      <td></td>
+      <td>Action, Adventure, Sci-Fi</td>
+      <td>Los Angeles is under attack by monsters. The m...</td>
+      <td>https://imdb.com/title/tt7963218/</td>
+    </tr>
+    <tr>
+      <th>3061</th>
+      <td>Cross 3</td>
+      <td>2019</td>
+      <td>2.0</td>
+      <td>346</td>
+      <td>R</td>
+      <td>100</td>
+      <td></td>
+      <td>Action, Sci-Fi</td>
+      <td>Armed with an explosive powerful ancient cross...</td>
+      <td>https://imdb.com/title/tt6197400/</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>蜘蛛人：穿越新宇宙</td>
+      <td>2023</td>
+      <td>9.0</td>
+      <td>140552</td>
+      <td>PG</td>
+      <td>140</td>
+      <td></td>
+      <td>Animation, Action, Adventure</td>
+      <td>Miles Morales catapults across the Multiverse,...</td>
+      <td>https://imdb.com/title/tt9362722/</td>
+    </tr>
+    <tr>
+      <th>1046</th>
+      <td>Ramayana: The Legend of Prince Rama</td>
+      <td>1993</td>
+      <td>9.2</td>
+      <td>11068</td>
+      <td>PG</td>
+      <td>135</td>
+      <td></td>
+      <td>Animation, Action, Adventure</td>
+      <td>An anime adaptation of the Hindu epic the Rama...</td>
+      <td>https://imdb.com/title/tt0259534/</td>
+    </tr>
+    <tr>
+      <th>3283</th>
+      <td>The Lord of the Rings: The Two Towers - Specia...</td>
+      <td>2003</td>
+      <td>9.5</td>
+      <td>322</td>
+      <td>PG-13</td>
+      <td>56</td>
+      <td></td>
+      <td>Action, Adventure, Drama</td>
+      <td>Extended scenes from 'The Lord of the Rings: T...</td>
+      <td>https://imdb.com/title/tt21811594/</td>
+    </tr>
+    <tr>
+      <th>2606</th>
+      <td>The Lord of the Rings: The Fellowship of the R...</td>
+      <td>2002</td>
+      <td>9.6</td>
+      <td>456</td>
+      <td>PG-13</td>
+      <td>50</td>
+      <td></td>
+      <td>Action, Adventure, Drama</td>
+      <td>Extended scenes from 'The Lord of the Rings: T...</td>
+      <td>https://imdb.com/title/tt21811588/</td>
+    </tr>
+    <tr>
+      <th>3379</th>
+      <td>The Lord of the Rings: The Return of the King ...</td>
+      <td>2004</td>
+      <td>9.7</td>
+      <td>311</td>
+      <td>PG-13</td>
+      <td>53</td>
+      <td></td>
+      <td>Action, Adventure, Drama</td>
+      <td>Extended scenes from 'The Lord of the Rings: T...</td>
+      <td>https://imdb.com/title/tt21811606/</td>
+    </tr>
+  </tbody>
+</table>
+<p>3617 rows × 10 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+
 </div>
 
 </div>
